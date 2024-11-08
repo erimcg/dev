@@ -1,7 +1,14 @@
 #include <stdio.h>
 
 int main() {
-    printf("hello 5 \\ 2 = %d r %d\n", 0, 0);
+    int x = 0;
+    int y = 0;
+
+    printf("Enter two integers separated by spaces: ");
+    scanf("%d %d\n", &x, &y);
+
+    int sum = x + y;
+    printf("x + y = %d\n", sum);
 
     return 0;
 }

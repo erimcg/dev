@@ -1,16 +1,14 @@
 #include <stdio.h>
 
 int main() {
+    int x = 0;
+    int y = 0;
+
     printf("Enter two integers separated by spaces: ");
+    scanf("%d %d", &x, &y);
 
-    char x = 0;
-    char y = 0;
-    scanf("%hhd %hhd", &x, &y);
-
-    char sum = x + y;
-    sum = sum << 2;
-
-    printf("%hhd + %hhd = %hhd\n", x, y, sum);
+    int sum = x + y;
+    printf("x + y = %d\n", sum);
 
     return 0;
 }

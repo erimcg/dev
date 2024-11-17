@@ -24,7 +24,7 @@ mGreaterEqualk:
 	
 	printf("m++: %d == 0\n", m);
 
-mNotEqualZero: ; //added empty statement
+mNotEqualZero: ; //added empty statement since can't declare var immediately after jump label
 
 	int product = m * k;
 

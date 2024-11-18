@@ -9,9 +9,9 @@
 .LC2:
 	.string	"%d\n"
 .LC3:
-    .string "sum: %d\n"
+    	.string "sum: %d\n"
 .LC4:
-    .string "num even: %d\n"
+    	.string "num even: %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -32,62 +32,62 @@ main:
 	call	__isoc99_scanf@PLT
 
 	movl	8(%rsp), %ebx
-    jmp     .test1
+    	jmp     .test1
 
 .print_interval:
-    leaq	.LC2(%rip), %rdi
-    movl    %ebx, %esi
-    call	printf@PLT
-    incl    %ebx
+    	leaq	.LC2(%rip), %rdi
+    	movl    %ebx, %esi
+    	call	printf@PLT
+    	incl    %ebx
 
 .test1:
 	cmpl     (%rsp), %ebx
-    jl      .print_interval
+    	jl      .print_interval
 
-    movl    $0, %ebp
-    movl	8(%rsp), %ebx
+    	movl    $0, %ebp
+    	movl	8(%rsp), %ebx
 
-    jmp     .test2
+    	jmp     .test2
 
 .compute_sum:
-    addl    %ebx, %ebp
-    incl    %ebx
+    	addl    %ebx, %ebp
+    	incl    %ebx
 
 .test2:
  	cmpl     (%rsp), %ebx
-    jl      .compute_sum
+    	jl      .compute_sum
 
-    leaq	.LC3(%rip), %rdi
-    movl    %ebp, %esi
-    call	printf@PLT
+    	leaq	.LC3(%rip), %rdi
+    	movl    %ebp, %esi
+    	call	printf@PLT
 
-    movl    $0, %ebp
-    movl	8(%rsp), %ebx
+    	movl    $0, %ebp
+    	movl	8(%rsp), %ebx
 
-    jmp .test3
+    	jmp .test3
 
 .count_evens:
 
-    movl	%ebx, %eax
+    	movl	%ebx, %eax
 	movl	$2, %esi
 	cdq
 	idivl	%esi
     
-    cmpl    $0, %edx
-    jne     .increment_i
+    	cmpl    $0, %edx
+    	jne     .increment_i
 
-    incl    %ebp
+    	incl    %ebp
 
 .increment_i:
-    incl    %ebx
+    	incl    %ebx
 
 .test3:
-    cmpl    (%rsp), %ebx
-    jl      .count_evens
+    	cmpl    (%rsp), %ebx
+    	jl      .count_evens
 
-    leaq	.LC4(%rip), %rdi
-    movl    %ebp, %esi
-    call	printf@PLT
+    	leaq	.LC4(%rip), %rdi
+    	movl    %ebp, %esi
+    	call	printf@PLT
 
 	addq	$16, %rsp
 	popq	%rbp

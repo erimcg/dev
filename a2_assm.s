@@ -9,15 +9,15 @@
 .LC1:
 	.string	"%d < %d\n"
 .LC2:
-    .string "m++: %d == 0\n"
+    	.string "m++: %d == 0\n"
 .LC3:
-    .string "%d * %d = %d != 20\n"
+    	.string "%d * %d = %d != 20\n"
 .LC4:
-    .string "sum: %d >= 20\n"
+    	.string "sum: %d >= 20\n"
 .LC5:
-    .string "sum: %d < 20\n"
+    	.string "sum: %d < 20\n"
 .LC6:
-    .string "sum * 4: %d\n"
+    	.string "sum * 4: %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -41,7 +41,7 @@ main:
 	movl	(%rsp), %edx
 
 	cmpl    %edx, %esi
-    jge     .mGreaterEqualk
+    	jge     .mGreaterEqualk
 
 	leaq	.LC1(%rip), %rdi
 	movl	$0, %eax
@@ -49,59 +49,59 @@ main:
 
 .mGreaterEqualk:
 
-    incl    8(%rsp)
-    movl	8(%rsp), %esi
+    	incl    8(%rsp)
+    	movl	8(%rsp), %esi
 
-    testl   %esi, %esi
-    jne     .mNotEqualZero
+    	testl   %esi, %esi
+    	jne     .mNotEqualZero
 
-    leaq	.LC2(%rip), %rdi
+    	leaq	.LC2(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 
 .mNotEqualZero:
 
-    movl    8(%rsp), %esi
-    movl    (%rsp), %edx
+    	movl    8(%rsp), %esi
+    	movl    (%rsp), %edx
 
-    movl    %esi, %ecx
-    imull    %edx, %ecx
+    	movl    %esi, %ecx
+    	imull    %edx, %ecx
 
-    cmpl    $20, %ecx
-    je      .productEqual20
+    	cmpl    $20, %ecx
+    	je      .productEqual20
 
-    leaq	.LC3(%rip), %rdi
+    	leaq	.LC3(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 
 .productEqual20:
 
-    movl    8(%rsp), %ebx
-    addl    (%rsp), %ebx
+    	movl    8(%rsp), %ebx
+    	addl    (%rsp), %ebx
 
-    cmpl    $20, %ebx
-    jl      .sumLessThan20
+    	cmpl    $20, %ebx
+    	jl      .sumLessThan20
 
-    leaq	.LC4(%rip), %rdi
-    movl    %ebx, %esi
+    	leaq	.LC4(%rip), %rdi
+    	movl    %ebx, %esi
 	movl	$0, %eax
 	call	printf@PLT
 
-    jmp .restOfCode
+    	jmp .restOfCode
 
 .sumLessThan20:
 
-    leaq	.LC5(%rip), %rdi
-    movl    %ebx, %esi
+    	leaq	.LC5(%rip), %rdi
+    	movl    %ebx, %esi
 	movl	$0, %eax
 	call	printf@PLT
 
 .restOfCode:
 
-    sall    $2, %ebx
+    	sall    $2, %ebx
 
-    leaq	.LC6(%rip), %rdi
-    movl    %ebx, %esi
+    	leaq	.LC6(%rip), %rdi
+    	movl    %ebx, %esi
 	movl	$0, %eax
 	call	printf@PLT
 

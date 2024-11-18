@@ -10,9 +10,9 @@
 .LC3:
 	.string	"-3 \\ 2 = %hhd r %hhd\n"
 .LC4:
-    .string "9 * 2 = %d\n"
+    	.string "9 * 2 = %d\n"
 .LC5:
-    .string "-7 * 2 = %hd\n"
+    	.string "-7 * 2 = %hd\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -59,14 +59,14 @@ main:
 	movl	$0, %eax
 
 	movl	$9, %esi
-    imull   $2, %esi
-    leaq	.LC4(%rip), %rdi
+    	imull   $2, %esi
+    	leaq	.LC4(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 
-    movw    $-7, %si
-    imulw   $2, %si
-    leaq	.LC5(%rip), %rdi
+    	movw    $-7, %si
+    	imulw   $2, %si
+    	leaq	.LC5(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 

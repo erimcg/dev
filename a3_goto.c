@@ -11,10 +11,10 @@ int main() {
     // print the integers in the interval [x,y)
 	int i = x;
 
-    goto test1;
+    	goto test1;
 
 print_interval:
-    printf("%d\n", i);
+    	printf("%d\n", i);
 	i++;
 
 test1:
@@ -26,7 +26,7 @@ test1:
 	int sum = 0;
 	i = x;
 
-    goto test2;
+    	goto test2;
 
 compute_sum:
 	sum += i;
@@ -34,7 +34,7 @@ compute_sum:
 
 test2:
 	if (i < y)
-        goto compute_sum;
+        	goto compute_sum;
 
 	printf("sum: %d\n", sum);
 
@@ -42,20 +42,20 @@ test2:
 	int num_even = 0;
 	i = x;
 
-    goto test3;
+    	goto test3;
 
 count_evens:
 	if (i % 2 != 0)
-        goto increment_i;
+        	goto increment_i;
     
-    num_even++;
+    	num_even++;
     
 increment_i:
-		i++;
+	i++;
 
 test3:
 	if (i < y) 
-        goto count_evens;
+        	goto count_evens;
 
 	printf("num even: %d\n", num_even);
 

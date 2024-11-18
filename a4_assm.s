@@ -9,9 +9,9 @@
 .LC2:
 	.string	"%d "
 .LC3:
-    .string "\n"
+    	.string "\n"
 .LC4:
-    .string "sum: %d\n"
+    	.string "sum: %d\n"
 	.text
 	.globl	main
 	.type	main, @function
@@ -31,86 +31,85 @@ main:
 	movl	$0, %eax
 	call	__isoc99_scanf@PLT
 
-    movl    8(%rsp), %ebx
-    cmpl    (%rsp), %ebx
-    jle     .finished_swap
+    	movl    8(%rsp), %ebx
+    	cmpl    (%rsp), %ebx
+    	jle     .finished_swap
 
-    movl    (%rsp), %ebp
-    movl    %ebx, (%rsp)
-    movl    %ebp, 8(%rax)
+    	movl    (%rsp), %ebp
+    	movl    %ebx, (%rsp)
+    	movl    %ebp, 8(%rax)
 
 .finished_swap:
 
 	movl	8(%rsp), %ebx
-    jmp     .test1
+    	jmp     .test1
 
 .print_interval:
-    leaq	.LC2(%rip), %rdi
-    movl    %ebx, %esi
-    call	printf@PLT
+    	leaq	.LC2(%rip), %rdi
+    	movl    %ebx, %esi
+    	call	printf@PLT
 
-    incl    %ebx
+    	incl    %ebx
 
 .test1:
 	cmpl     (%rsp), %ebx
-    jle      .print_interval
+    	jle      .print_interval
 
-    leaq	.LC3(%rip), %rdi
-    call	printf@PLT
+    	leaq	.LC3(%rip), %rdi
+    	call	printf@PLT
 
-    movl	8(%rsp), %ebx
-    jmp     .test2
+    	movl	8(%rsp), %ebx
+    	jmp     .test2
 
 .print_multiples_of_3:
-    movl	%ebx, %eax
+	movl	%ebx, %eax
 	movl	$3, %esi
 	cdq
 	idivl	%esi
     
-    cmpl    $0, %edx
-    jne     .increment_i1
+    	cmpl    $0, %edx
+    	jne     .increment_i1
 
-    leaq	.LC2(%rip), %rdi
-    movl    %ebx, %esi
-    call	printf@PLT
+    	leaq	.LC2(%rip), %rdi
+    	movl    %ebx, %esi
+    	call	printf@PLT
  
 .increment_i1:
-    incl    %ebx
+    	incl    %ebx
 
 .test2:
  	cmpl     (%rsp), %ebx
-    jle      .print_multiples_of_3
+    	jle      .print_multiples_of_3
 
-    leaq	.LC3(%rip), %rdi
-    call	printf@PLT
+    	leaq	.LC3(%rip), %rdi
+    	call	printf@PLT
 
+    	movl    $0, %ebp
+    	movl	8(%rsp), %ebx
 
-    movl    $0, %ebp
-    movl	8(%rsp), %ebx
-
-    jmp .test3
+    	jmp .test3
 
 .compute_sum:
-    movl	%ebx, %eax
+    	movl	%ebx, %eax
 	movl	$3, %esi
 	cdq
 	idivl	%esi
     
-    cmpl    $0, %edx
-    jne     .increment_i2
+    	cmpl    $0, %edx
+    	jne     .increment_i2
 
-    addl    %ebx, %ebp
+    	addl    %ebx, %ebp
 
 .increment_i2:
-    incl    %ebx
+    	incl    %ebx
 
 .test3:
-    cmpl    (%rsp), %ebx
-    jle     .compute_sum
+    	cmpl    (%rsp), %ebx
+    	jle     .compute_sum
 
-    leaq	.LC4(%rip), %rdi
-    movl    %ebp, %esi
-    call	printf@PLT
+    	leaq	.LC4(%rip), %rdi
+    	movl    %ebp, %esi
+    	call	printf@PLT
 
 	addq	$16, %rsp
 	popq	%rbp

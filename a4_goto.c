@@ -39,7 +39,7 @@ test1:
 
 print_multiples_of_3:
 	if (i % 3 != 0)
-        goto increment_i1;
+        	goto increment_i1;
 
 	printf("%d ", i);
 

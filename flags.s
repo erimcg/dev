@@ -14,8 +14,8 @@ foo:
 	movq	$0, %rbx
 	popq	%rbx
 
-    movzbw    %al, %si
-    movzbw    %dl, %dx
+    	movzbw    %al, %si
+    	movzbw    %dl, %dx
 
 	movw	$0x1, %cx
 	andw	%bx, %cx
@@ -31,13 +31,13 @@ foo:
 	movq	$0x800, %rbp
 	andw	%bx, %bp
 	shrq	$11, %rbp
-    pushq   %rbp
+    	pushq   %rbp
 
 	leaq	.LC1(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 
-    popq    %rbp
+    	popq    %rbp
 	movl	$0, %eax
 	ret
 	.cfi_endproc

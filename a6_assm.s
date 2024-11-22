@@ -6,7 +6,7 @@
 say_hello:
 .LFB0:
 	.cfi_startproc
-	leaq	.LC4(%rip), %rdi
+	leaq	.LC0(%rip), %rdi
 	movl	$0, %eax
 	call	printf@PLT
 	ret
@@ -40,23 +40,41 @@ add:
 .LFE2:
 	.size	add, .-add
 
+.text
+	.globl	swap
+	.type	swap, @function
+swap:
+.LFB3:
+	.cfi_startproc
+	movl	(%rdi), %eax
+	xorl	%eax, (%rsi)
+	xorl	(%rsi), %eax
+	xorl	%eax, (%rsi)
+	movl	%eax, (%rdi)
+	ret
+	.cfi_endproc
+.LFE3:
+	.size	swap, .-swap
+
 	.section	.rodata
 .LC0:
-	.string "Please enter two integers (x and y) separated by a space: "
-.LC1:
-	.string	"%d %d"
-.LC2:
-	.string	"x + 1 = %d\n"
-.LC3:
-	.string "x + y = %d\n"
-.LC4:
 	.string "Hello!\n"
+.LC1:
+	.string "Please enter two integers (x and y) separated by a space: "
+.LC2:
+	.string	"%d %d"
+.LC3:
+	.string	"x + 1 = %d\n"
+.LC4:
+	.string "x + y = %d\n"
+.LC5:
+	.string "x: %d, y: %d\n"
 
 	.text
 	.globl	main
 	.type	main, @function
 main:
-.LFB3:
+.LFB4:
 	.cfi_startproc
 
 	call	say_hello
@@ -65,10 +83,10 @@ main:
 	movl	$0, 4(%rsp)
 	movl	$0, (%rsp)
 
-	leaq	.LC0(%rip), %rdi
+	leaq	.LC1(%rip), %rdi
 	call	printf@PLT
 
-	leaq	.LC1(%rip), %rdi
+	leaq	.LC2(%rip), %rdi
 	leaq	4(%rsp), %rsi
 	leaq	(%rsp), %rdx
 	call	__isoc99_scanf@PLT
@@ -76,7 +94,7 @@ main:
 	movl	4(%rsp), %edi
 	call	increment
 
-	leaq	.LC2(%rip), %rdi
+	leaq	.LC3(%rip), %rdi
 	movl	%eax, %esi
 	call	printf@PLT
 
@@ -84,14 +102,23 @@ main:
 	movl	(%rsp), %esi
 	call	add
 
-	leaq	.LC3(%rip), %rdi
+	leaq	.LC4(%rip), %rdi
 	movl	%eax, %esi
+	call	printf@PLT
+
+	leaq	4(%rsp), %rdi
+	leaq	(%rsp), %rsi
+	call swap
+
+	leaq	.LC5(%rip), %rdi
+	movl	4(%rsp), %esi
+	movl	(%rsp), %edx
 	call	printf@PLT
 
 	movl	$0, %eax
 	addq	$8, %rsp
 	.cfi_endproc	
-.LFE3:
+.LFE4:
 	.size	main, .-main
 	
 	.ident	"GCC: (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0"

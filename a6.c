@@ -12,6 +12,12 @@ int add(int x, int y) {
         return x + y;
 }
 
+void swap(int* x, int *y) {
+        *y = *x ^ *y;
+        *x = *x ^ *y;
+        *y = *x ^ *y;
+}
+
 int main() {
 
         say_hello();
@@ -30,6 +36,10 @@ int main() {
         z = add(x,y);
         
         printf("x + y = %d\n", z);
+
+        swap(&x, &y);
+
+        printf("x: %d, y: %d\n", x, y);
 
         return 0;
 }

@@ -4,19 +4,19 @@ int main() {
 
         int arr[] = { 5, 4, 3, 2, 1 };
 
-        printf("arr: %p\n", arr);
-        printf("sizeof arr: %lu\n\n", sizeof(arr));
+        printf("arr: %p\n", arr);  // 0x...
+        printf("sizeof arr: %lu\n\n", sizeof(arr));  // 20
 
-        printf("elm at arr: %d\n", *arr);
-        printf("sizeof elm at arr: %lu\n", sizeof(*arr));
-        printf("sizeof int: %lu\n\n", sizeof(int));
+        printf("elm at arr: %d\n", *arr);  // 5
+        printf("sizeof elm at arr: %lu\n", sizeof(*arr));  // 4
+        printf("sizeof int: %lu\n\n", sizeof(int));  // 4
 
-        int arrLen = sizeof(arr) / sizeof(*arr);
-        printf("length of array: %d\n\n", arrLen);
+        int arrLen = sizeof(arr) / sizeof(*arr); 
+        printf("length of array: %d\n\n", arrLen);  // 5
 
         // compiler knows that arr is a pointer to int, so adding i to arr adds (i * 4) to arr
         for(int i = 0; i < arrLen; i++) {
-                printf("add of elm @ index %d: %p\n", i, arr + i);  
+                printf("add of elm @ index %d: %p\n", i, arr + i);
         }
         printf("\n");
 
@@ -49,7 +49,7 @@ int main() {
         /* 2D arrays */
         printf("*** 2D Arrays ***\n\n");
 
-        int m[][3] = { { 1, 2, 3 }, { 4, 5, 6 } };
+        int m[][3] = { { 1, 2, 3 }, { 4, 5, 6 } };       
 
         printf("size of m: %lu\n", sizeof(m));
         printf("size of *m (m[0]): %lu\n", sizeof(*m));
